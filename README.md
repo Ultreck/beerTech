@@ -20,19 +20,51 @@ A scalable e-commerce platform built with NestJS microservices. The system inclu
 ---
 
 ## Project Structure
-ecommerce/
-├── apps/
-│ ├── user/ # User Service
-│ │ ├── src/
-│ │ │ ├── entities/ # User entity (user.entity.ts)
-│ │ │ ├── controllers/
-│ │ │ ├── services/
-│ │ │ └── main.ts
-│ ├── product/ # Product Service
-│ └── order/ # Order Service
-├── .env # Environment variables
-├── docker-compose.yml # Docker setup for services + databases
-└── README.md
+my-microservices-app/
+│── api-gateway/            # 🚀 New API Gateway
+│   ├── src/
+│   │   ├── auth/
+│   │   │   ├── auth.controller.ts  
+│   │   │   ├── auth.module.ts      
+│   │   ├── products/
+│   │   │   ├── products.controller.ts  
+│   │   │   ├── products.module.ts      
+│   │   ├── orders/
+│   │   │   ├── orders.controller.ts    
+│   │   │   ├── orders.module.ts        
+│   │   ├── app.module.ts  # API Gateway Core Module
+│   │   ├── main.ts        # Starts API Gateway
+│   ├── package.json
+│   ├── .env
+│
+│── user/           # 👤 User Microservice
+│   ├── src/
+│   │   ├── user.controller.ts  
+│   │   ├── user.module.ts      
+│   │   ├── user.service.ts      
+│   │   ├── main.ts        # Starts User Microservice
+│   ├── package.json
+│   ├── .env
+│
+│── product/        # 🛍 Product Microservice
+│   ├── src/
+│   │   ├── product.controller.ts  
+│   │   ├── product.module.ts      
+│   │   ├── main.ts        # Starts Product Microservice
+│   ├── package.json
+│   ├── .env
+│
+│── order/          # 📦 Order Microservice
+│   ├── src/
+│   │   ├── order.controller.ts  
+│   │   ├── order.module.ts      
+│   │   ├── main.ts        # Starts Order Microservice
+│   ├── package.json
+│   ├── .env
+│
+│── docker-compose.yml       # (Optional: for containerized setup)
+│── README.md
+
 
 
 ## Getting Started
