@@ -20,51 +20,58 @@ A scalable e-commerce platform built with NestJS microservices. The system inclu
 ---
 
 ## Project Structure
-my-microservices-app/
-│── api-gateway/            # 🚀 New API Gateway
+
+ecommerce/
+│
+├── api-gateway/            # API Gateway exposes HTTP endpoints and Swagger docs
 │   ├── src/
 │   │   ├── auth/
-│   │   │   ├── auth.controller.ts  
+│   │   │   ├── auth.controller.ts  // HTTP endpoints for user registration & login
 │   │   │   ├── auth.module.ts      
+│   │   │   └── dto/
+│   │   │       ├── create-user.dto.ts   // DTO for registration
+│   │   │       └── login-user.dto.ts      // DTO for login
 │   │   ├── products/
 │   │   │   ├── products.controller.ts  
 │   │   │   ├── products.module.ts      
 │   │   ├── orders/
 │   │   │   ├── orders.controller.ts    
 │   │   │   ├── orders.module.ts        
-│   │   ├── app.module.ts  # API Gateway Core Module
-│   │   ├── main.ts        # Starts API Gateway
-│   ├── package.json
+│   │   ├── app.module.ts  // Registers microservice client connections
+│   │   ├── main.ts        // Bootstraps API Gateway and Swagger setup
 │   ├── .env
+│   ├── package.json
 │
-│── user/           # 👤 User Microservice
+├── user-service/           # User Microservice (internal message-based API)
 │   ├── src/
-│   │   ├── user.controller.ts  
-│   │   ├── user.module.ts      
+│   │   ├── user.controller.ts   // Uses @MessagePattern for commands
+│   │   ├── user.module.ts       
 │   │   ├── user.service.ts      
-│   │   ├── main.ts        # Starts User Microservice
-│   ├── package.json
+│   │   ├── user.entity.ts       // Contains password hashing & comparison logic
+│   │   ├── main.ts              // Bootstraps the microservice on a specific TCP port
 │   ├── .env
+│   ├── package.json
 │
-│── product/        # 🛍 Product Microservice
+├── product-service/        # Product Microservice
 │   ├── src/
 │   │   ├── product.controller.ts  
 │   │   ├── product.module.ts      
-│   │   ├── main.ts        # Starts Product Microservice
-│   ├── package.json
+│   │   ├── main.ts              
 │   ├── .env
+│   ├── package.json
 │
-│── order/          # 📦 Order Microservice
+├── order-service/          # Order Microservice
 │   ├── src/
 │   │   ├── order.controller.ts  
 │   │   ├── order.module.ts      
-│   │   ├── main.ts        # Starts Order Microservice
-│   ├── package.json
+│   │   ├── main.ts              
 │   ├── .env
-│
-│── docker-compose.yml       # (Optional: for containerized setup)
-│── README.md
+│   ├── package.json
 
+
+
+## System Design 
+![System Design flow](./docs/images/ecommerce.drawio.svg)
 
 
 ## Getting Started
