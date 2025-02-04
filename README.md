@@ -68,7 +68,8 @@ ecommerce/
 │   ├── .env
 │   ├── package.json
 
-
+## Swagger Documentation
+- http://localhost:3000/api-docs
 
 ## System Design 
 ![System Design flow](./docs/images/ecommerce.drawio.svg)
